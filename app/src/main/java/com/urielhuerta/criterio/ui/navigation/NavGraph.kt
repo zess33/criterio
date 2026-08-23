@@ -132,7 +132,12 @@ fun CriterioNavGraph(
                 LessonDetailScreen(
                     lessonId = lessonId,
                     viewModel = academyViewModel,
-                    onNavigateBack = { navController.popBackStack() }
+                    onNavigateBack = { navController.popBackStack() },
+                    onNavigateToNextLesson = { nextId ->
+                        navController.navigate(Screen.LessonDetail.createRoute(nextId)) {
+                            popUpTo(Screen.LessonDetail.createRoute(lessonId)) { inclusive = true }
+                        }
+                    }
                 )
             }
 

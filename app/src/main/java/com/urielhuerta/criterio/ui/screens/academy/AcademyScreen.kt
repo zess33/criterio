@@ -1,10 +1,12 @@
 package com.urielhuerta.criterio.ui.screens.academy
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -193,7 +195,7 @@ fun ModuleCard(
 
             if (isExpanded) {
                 Spacer(modifier = Modifier.height(12.dp))
-                Divider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
+                HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
                 Spacer(modifier = Modifier.height(8.dp))
 
                 lessons.forEach { lesson ->
@@ -247,14 +249,23 @@ fun ModuleCard(
 fun LessonDetailScreen(
     lessonId: String,
     viewModel: AcademyViewModel,
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    onNavigateToNextLesson: (String) -> Unit = {}
 ) {
     LaunchedEffect(lessonId) {
         viewModel.loadLesson(lessonId)
     }
 
     val lesson = viewModel.currentLesson
+    val modules by viewModel.modulesWithLessons.collectAsState()
     val gson = remember { Gson() }
+
+    // Calcular la siguiente lección en orden secuencial
+    val allLessons = remember(modules) { modules.flatMap { it.lessons } }
+    val currentIndex = remember(allLessons, lessonId) { allLessons.indexOfFirst { it.id == lessonId } }
+    val nextLesson = remember(allLessons, currentIndex) {
+        if (currentIndex != -1 && currentIndex + 1 < allLessons.size) allLessons[currentIndex + 1] else null
+    }
 
     Scaffold(
         topBar = {
@@ -384,19 +395,36 @@ fun LessonDetailScreen(
                 if (quiz != null) {
                     item {
                         CriterioCard {
-                            Text("Comprobación de Criterio", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                Icon(Icons.Default.Quiz, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                                Text("Comprobación de Criterio", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                            }
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(quiz.question, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
-                            Spacer(modifier = Modifier.height(10.dp))
+                            Spacer(modifier = Modifier.height(12.dp))
 
                             quiz.options.forEachIndexed { index, option ->
                                 val isSelected = viewModel.selectedQuizOption == index
                                 val isCorrect = index == quiz.correctIndex
-                                val bgColor = when {
-                                    !viewModel.isQuizAnswered -> if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant
-                                    isCorrect -> EvidenceHigh.copy(alpha = 0.2f)
-                                    isSelected -> RiskRed.copy(alpha = 0.2f)
-                                    else -> MaterialTheme.colorScheme.surfaceVariant
+                                val letter = when (index) {
+                                    0 -> "A"
+                                    1 -> "B"
+                                    2 -> "C"
+                                    else -> "D"
+                                }
+
+                                val containerColor = when {
+                                    !viewModel.isQuizAnswered -> if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface
+                                    isCorrect -> EvidenceHigh.copy(alpha = 0.18f)
+                                    isSelected -> RiskRed.copy(alpha = 0.18f)
+                                    else -> MaterialTheme.colorScheme.surface
+                                }
+
+                                val borderColor = when {
+                                    !viewModel.isQuizAnswered -> if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.25f)
+                                    isCorrect -> EvidenceHigh
+                                    isSelected -> RiskRed
+                                    else -> MaterialTheme.colorScheme.outline.copy(alpha = 0.15f)
                                 }
 
                                 Card(
@@ -406,17 +434,57 @@ fun LessonDetailScreen(
                                         .clickable(enabled = !viewModel.isQuizAnswered) {
                                             viewModel.selectedQuizOption = index
                                         },
-                                    shape = RoundedCornerShape(8.dp),
-                                    colors = CardDefaults.cardColors(containerColor = bgColor)
+                                    shape = RoundedCornerShape(12.dp),
+                                    colors = CardDefaults.cardColors(containerColor = containerColor),
+                                    border = androidx.compose.foundation.BorderStroke(if (isSelected || (viewModel.isQuizAnswered && isCorrect)) 2.dp else 1.dp, borderColor)
                                 ) {
-                                    Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                                        Text(option, style = MaterialTheme.typography.bodyMedium)
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(14.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                                    ) {
+                                        Surface(
+                                            shape = CircleShape,
+                                            color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
+                                            modifier = Modifier.size(28.dp)
+                                        ) {
+                                            Box(contentAlignment = Alignment.Center) {
+                                                Text(
+                                                    text = letter,
+                                                    style = MaterialTheme.typography.labelMedium,
+                                                    fontWeight = FontWeight.Bold,
+                                                    color = if (isSelected) Color.White else MaterialTheme.colorScheme.onSurfaceVariant
+                                                )
+                                            }
+                                        }
+
+                                        Text(
+                                            text = option,
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                                            modifier = Modifier.weight(1f)
+                                        )
+
+                                        if (viewModel.isQuizAnswered) {
+                                            if (isCorrect) {
+                                                Icon(Icons.Default.CheckCircle, contentDescription = "Correcto", tint = EvidenceHigh)
+                                            } else if (isSelected) {
+                                                Icon(Icons.Default.Cancel, contentDescription = "Incorrecto", tint = RiskRed)
+                                            }
+                                        } else {
+                                            RadioButton(
+                                                selected = isSelected,
+                                                onClick = { viewModel.selectedQuizOption = index }
+                                            )
+                                        }
                                     }
                                 }
                             }
 
                             if (!viewModel.isQuizAnswered) {
-                                Spacer(modifier = Modifier.height(10.dp))
+                                Spacer(modifier = Modifier.height(12.dp))
                                 Button(
                                     onClick = {
                                         viewModel.isQuizAnswered = true
@@ -425,51 +493,117 @@ fun LessonDetailScreen(
                                         }
                                     },
                                     enabled = viewModel.selectedQuizOption != null,
-                                    modifier = Modifier.fillMaxWidth()
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(50.dp),
+                                    shape = RoundedCornerShape(10.dp)
                                 ) {
-                                    Text("Validar Respuesta")
+                                    Text("Validar Respuesta", fontWeight = FontWeight.Bold)
                                 }
                             } else {
-                                Spacer(modifier = Modifier.height(10.dp))
-                                Text(
-                                    text = quiz.explanation,
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = if (viewModel.selectedQuizOption == quiz.correctIndex) EvidenceHigh else RiskRed,
-                                    fontWeight = FontWeight.Medium
-                                )
+                                Spacer(modifier = Modifier.height(12.dp))
+                                Card(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    shape = RoundedCornerShape(10.dp),
+                                    colors = CardDefaults.cardColors(
+                                        containerColor = if (viewModel.selectedQuizOption == quiz.correctIndex) EvidenceHigh.copy(alpha = 0.12f) else RiskRed.copy(alpha = 0.12f)
+                                    ),
+                                    border = androidx.compose.foundation.BorderStroke(1.dp, if (viewModel.selectedQuizOption == quiz.correctIndex) EvidenceHigh else RiskRed)
+                                ) {
+                                    Column(modifier = Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                        Text(
+                                            text = if (viewModel.selectedQuizOption == quiz.correctIndex) "✓ ¡Respuesta Calibrada y Correcta!" else "⚠️ Revisa el Razonamiento:",
+                                            style = MaterialTheme.typography.titleSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = if (viewModel.selectedQuizOption == quiz.correctIndex) EvidenceHigh else RiskRed
+                                        )
+                                        Text(
+                                            text = quiz.explanation,
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                    }
+                                }
                             }
                         }
                     }
                 }
 
-                // Botones de Completar & Navegar
+                // Botones de Acción & Avance a la Siguiente Lección
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                        Button(
+                        // Botón de Siguiente Lección (si existe)
+                        if (nextLesson != null) {
+                            Button(
+                                onClick = {
+                                    viewModel.completeCurrentLesson(true)
+                                    onNavigateToNextLesson(nextLesson.id)
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(54.dp),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    Text(
+                                        text = "Siguiente Lección: ${nextLesson.title.take(24)}...",
+                                        style = MaterialTheme.typography.titleMedium,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Icon(Icons.Default.ArrowForward, contentDescription = null)
+                                }
+                            }
+                        } else {
+                            Card(
+                                modifier = Modifier.fillMaxWidth(),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = CardDefaults.cardColors(containerColor = EvidenceHigh.copy(alpha = 0.15f)),
+                                border = androidx.compose.foundation.BorderStroke(1.dp, EvidenceHigh)
+                            ) {
+                                Row(
+                                    modifier = Modifier.padding(16.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                    Icon(Icons.Default.EmojiEvents, contentDescription = null, tint = EvidenceHigh)
+                                    Text(
+                                        "🎉 ¡Has completado todas las lecciones de la Academia!",
+                                        style = MaterialTheme.typography.titleSmall,
+                                        fontWeight = FontWeight.Bold,
+                                        color = EvidenceHigh
+                                    )
+                                }
+                            }
+                        }
+
+                        // Botón de Alternar Estado de Lección
+                        OutlinedButton(
                             onClick = {
                                 val newState = !lesson.isCompleted
                                 viewModel.completeCurrentLesson(newState)
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(52.dp),
+                                .height(50.dp),
                             shape = RoundedCornerShape(12.dp),
-                            colors = if (lesson.isCompleted) ButtonDefaults.buttonColors(containerColor = EvidenceHigh) else ButtonDefaults.buttonColors()
+                            colors = if (lesson.isCompleted) ButtonDefaults.outlinedButtonColors(contentColor = EvidenceHigh) else ButtonDefaults.outlinedButtonColors()
                         ) {
                             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                Icon(if (lesson.isCompleted) Icons.Default.CheckCircle else Icons.Default.Check, contentDescription = null)
-                                Text(if (lesson.isCompleted) "✓ Lección Completada (Toca para alternar)" else "Marcar como Completada")
+                                Icon(if (lesson.isCompleted) Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked, contentDescription = null)
+                                Text(if (lesson.isCompleted) "Lección Completada ✓ (Toca para desmarcar)" else "Marcar como Completada")
                             }
                         }
 
-                        OutlinedButton(
+                        // Botón de Volver al Menú
+                        TextButton(
                             onClick = onNavigateBack,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(48.dp),
-                            shape = RoundedCornerShape(12.dp)
+                            modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text("Volver a la Academia")
+                            Text("Volver al Índice de la Academia")
                         }
                     }
                 }

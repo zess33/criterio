@@ -156,11 +156,25 @@ fun TestMeScreen(
                     currentQ.options.forEachIndexed { idx, optionText ->
                         val isSelected = viewModel.selectedOptionIndex == idx
                         val isCorrect = idx == currentQ.correctIndex
+                        val letter = when (idx) {
+                            0 -> "A"
+                            1 -> "B"
+                            2 -> "C"
+                            else -> "D"
+                        }
+
                         val cardBg = when {
                             !viewModel.isAnswerSubmitted -> if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface
-                            isCorrect -> EvidenceHigh.copy(alpha = 0.2f)
-                            isSelected -> RiskRed.copy(alpha = 0.2f)
+                            isCorrect -> EvidenceHigh.copy(alpha = 0.18f)
+                            isSelected -> RiskRed.copy(alpha = 0.18f)
                             else -> MaterialTheme.colorScheme.surface
+                        }
+
+                        val borderColor = when {
+                            !viewModel.isAnswerSubmitted -> if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.25f)
+                            isCorrect -> EvidenceHigh
+                            isSelected -> RiskRed
+                            else -> MaterialTheme.colorScheme.outline.copy(alpha = 0.15f)
                         }
 
                         Card(
@@ -169,11 +183,52 @@ fun TestMeScreen(
                                 .clickable(enabled = !viewModel.isAnswerSubmitted) {
                                     viewModel.selectedOptionIndex = idx
                                 },
-                            shape = RoundedCornerShape(10.dp),
+                            shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = cardBg),
-                            border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
+                            border = androidx.compose.foundation.BorderStroke(if (isSelected || (viewModel.isAnswerSubmitted && isCorrect)) 2.dp else 1.dp, borderColor)
                         ) {
-                            Text(text = optionText, modifier = Modifier.padding(14.dp), style = MaterialTheme.typography.bodyMedium)
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(14.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                            ) {
+                                Surface(
+                                    shape = androidx.compose.foundation.shape.CircleShape,
+                                    color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
+                                    modifier = Modifier.size(28.dp)
+                                ) {
+                                    Box(contentAlignment = Alignment.Center) {
+                                        Text(
+                                            text = letter,
+                                            style = MaterialTheme.typography.labelMedium,
+                                            fontWeight = FontWeight.Bold,
+                                            color = if (isSelected) androidx.compose.ui.graphics.Color.White else MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    }
+                                }
+
+                                Text(
+                                    text = optionText,
+                                    modifier = Modifier.weight(1f),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal
+                                )
+
+                                if (viewModel.isAnswerSubmitted) {
+                                    if (isCorrect) {
+                                        Icon(Icons.Default.CheckCircle, contentDescription = "Correcto", tint = EvidenceHigh)
+                                    } else if (isSelected) {
+                                        Icon(Icons.Default.Cancel, contentDescription = "Incorrecto", tint = RiskRed)
+                                    }
+                                } else {
+                                    RadioButton(
+                                        selected = isSelected,
+                                        onClick = { viewModel.selectedOptionIndex = idx }
+                                    )
+                                }
+                            }
                         }
                     }
                 }
