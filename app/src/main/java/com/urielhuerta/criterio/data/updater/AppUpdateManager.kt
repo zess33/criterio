@@ -2,6 +2,7 @@ package com.urielhuerta.criterio.data.updater
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -43,9 +44,23 @@ class AppUpdateManager(
     private val repoName: String = "criterio"
 ) {
     private val gson = Gson()
-    val currentVersionName: String = "1.0.0"
 
-    suspend fun checkForUpdates(): UpdateCheckResult = withContext(Dispatchers.IO) {
+    fun getInstalledVersionName(context: Context): String {
+        return try {
+            val pInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                context.packageManager.getPackageInfo(context.packageName, PackageManager.PackageInfoFlags.of(0))
+            } else {
+                @Suppress("DEPRECATION")
+                context.packageManager.getPackageInfo(context.packageName, 0)
+            }
+            pInfo.versionName ?: "1.0.1"
+        } catch (e: Exception) {
+            "1.0.1"
+        }
+    }
+
+    suspend fun checkForUpdates(context: Context): UpdateCheckResult = withContext(Dispatchers.IO) {
+        val currentVersion = getInstalledVersionName(context)
         try {
             val apiUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases/latest"
             val url = URL(apiUrl)
@@ -61,7 +76,7 @@ class AppUpdateManager(
                 val release = gson.fromJson(json, GitHubRelease::class.java)
 
                 val cleanLatest = release.tagName.removePrefix("v").trim()
-                val cleanCurrent = currentVersionName.removePrefix("v").trim()
+                val cleanCurrent = currentVersion.removePrefix("v").trim()
 
                 val isNewer = isVersionNewer(cleanLatest, cleanCurrent)
                 val apkAsset = release.assets?.firstOrNull { it.name.endsWith(".apk") }
@@ -69,7 +84,7 @@ class AppUpdateManager(
 
                 UpdateCheckResult(
                     isUpdateAvailable = isNewer,
-                    currentVersion = currentVersionName,
+                    currentVersion = currentVersion,
                     latestVersion = cleanLatest,
                     releaseTitle = release.name ?: "Versión ${release.tagName}",
                     changelog = release.body ?: "Mejoras de rendimiento, estabilidad y nuevas funciones.",
@@ -78,8 +93,8 @@ class AppUpdateManager(
             } else {
                 UpdateCheckResult(
                     isUpdateAvailable = false,
-                    currentVersion = currentVersionName,
-                    latestVersion = currentVersionName,
+                    currentVersion = currentVersion,
+                    latestVersion = currentVersion,
                     releaseTitle = "Sin actualizaciones",
                     changelog = "Estás en la versión más reciente disponible.",
                     downloadUrl = null
@@ -89,8 +104,8 @@ class AppUpdateManager(
             e.printStackTrace()
             UpdateCheckResult(
                 isUpdateAvailable = false,
-                currentVersion = currentVersionName,
-                latestVersion = currentVersionName,
+                currentVersion = currentVersion,
+                latestVersion = currentVersion,
                 releaseTitle = "Error de conexión",
                 changelog = "No se pudo verificar la versión en GitHub. Revisa tu conexión a internet.",
                 downloadUrl = null

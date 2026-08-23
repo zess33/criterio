@@ -58,15 +58,17 @@ class SettingsViewModel(
         viewModelScope.launch { preferencesRepository.setDarkMode(isDark) }
     }
 
-    fun checkForUpdates() {
+    fun checkForUpdates(context: Context) {
         if (isCheckingUpdates || isDownloading) return
         isCheckingUpdates = true
         updateErrorMessage = null
         viewModelScope.launch {
-            updateResult = appUpdateManager.checkForUpdates()
+            updateResult = appUpdateManager.checkForUpdates(context)
             isCheckingUpdates = false
         }
     }
+
+    fun getInstalledVersion(context: Context): String = appUpdateManager.getInstalledVersionName(context)
 
     fun downloadAndInstall(context: Context) {
         val downloadUrl = updateResult?.downloadUrl ?: return
@@ -147,11 +149,11 @@ fun SettingsScreen(
                     )
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    Text("Versión Instalada: v1.0.0 (Build 1)", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+                    Text("Versión Instalada: v${viewModel.getInstalledVersion(context)}", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Button(
-                        onClick = { viewModel.checkForUpdates() },
+                        onClick = { viewModel.checkForUpdates(context) },
                         enabled = !viewModel.isCheckingUpdates && !viewModel.isDownloading,
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(10.dp)

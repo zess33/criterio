@@ -60,10 +60,10 @@ class HomeViewModel(
     var downloadProgress by mutableStateOf(0f)
     var showUpdateDialog by mutableStateOf(false)
 
-    fun checkUpdatesOnLaunch() {
+    fun checkUpdatesOnLaunch(context: android.content.Context) {
         viewModelScope.launch {
             try {
-                val result = appUpdateManager.checkForUpdates()
+                val result = appUpdateManager.checkForUpdates(context)
                 updateCheckResult = result
                 if (result.isUpdateAvailable) {
                     showUpdateDialog = true
@@ -131,7 +131,7 @@ fun HomeScreen(
     val context = androidx.compose.ui.platform.LocalContext.current
 
     LaunchedEffect(Unit) {
-        viewModel.checkUpdatesOnLaunch()
+        viewModel.checkUpdatesOnLaunch(context)
     }
 
     var showReviewDialog by remember { mutableStateOf(false) }
