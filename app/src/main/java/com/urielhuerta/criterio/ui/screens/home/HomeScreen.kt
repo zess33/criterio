@@ -452,9 +452,9 @@ fun HomeScreen(
                             onClick = onNavigateToDarkPsychology
                         )
                         ActionCard(
-                            title = "Entrenador de Voz",
-                            desc = "Cadencia & pausas",
-                            icon = Icons.Default.Mic,
+                            title = "Entrenador Asertivo",
+                            desc = "Calibración y respuestas",
+                            icon = Icons.Default.Forum,
                             modifier = Modifier.weight(1f),
                             onClick = onNavigateToVoiceCoach
                         )

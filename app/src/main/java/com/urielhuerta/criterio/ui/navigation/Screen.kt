@@ -28,7 +28,7 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector?
     object NewPrediction : Screen("new_prediction", "Nueva Predicción")
     object BayesLab : Screen("bayes_lab", "Laboratorio Bayesiano", Icons.Default.Calculate)
     object ReciprocityTool : Screen("reciprocity_tool", "Indicador de Reciprocidad", Icons.Default.Balance)
-    object VoiceCoach : Screen("voice_coach", "Entrenador de Voz", Icons.Default.Mic)
+    object VoiceCoach : Screen("voice_coach", "Entrenador de Comunicación", Icons.Default.Forum)
     object DarkPsychology : Screen("dark_psychology", "Psicología Oscura", Icons.Default.Security)
     object Stats : Screen("stats", "Progreso & Logros", Icons.Default.EmojiEvents)
     object Settings : Screen("settings", "Configuración", Icons.Default.Settings)

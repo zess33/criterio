@@ -316,121 +316,124 @@ fun ReciprocityScreen(
     }
 }
 
-// 3. ENTRENADOR DE VOZ Y COMUNICACIÓN
-data class VoicePracticePrompt(
+// 3. ENTRENADOR DE COMUNICACIÓN & RESPUESTAS ASERTIVAS (100% TEXTO / SIN MICRÓFONO)
+data class CommunicationPrompt(
     val id: String,
     val category: String,
     val situationTitle: String,
     val promptQuestion: String,
-    val goalHint: String
+    val goalHint: String,
+    val calibratedExample: String
 )
 
-class VoiceCoachViewModel(
-    private val voiceEngine: VoiceCoachEngine = VoiceCoachEngine()
-) : ViewModel() {
+class VoiceCoachViewModel : ViewModel() {
 
     val prompts = listOf(
-        VoicePracticePrompt(
-            id = "vp_1",
+        CommunicationPrompt(
+            id = "cp_1",
             category = "Presentación & Pasión",
             situationTitle = "¿A qué te dedicas?",
-            promptQuestion = "Te preguntan en una cita a qué te dedicas. Explica tu trabajo enfocándote en lo que te divierte, desafía o apasiona sin dar un currículum aburrido.",
-            goalHint = "Meta: 20-30 segundos, ritmo calmado (120-140 PPM), sin muletillas ('este', 'o sea')."
+            promptQuestion = "Te preguntan en una cita a qué te dedicas. Explica tu trabajo enfocándote en lo que te divierte, desafía o apasiona sin sonar como un currículum aburrido.",
+            goalHint = "Meta: 15-40 palabras, tono relajado, sin sonar jactancioso ni disculparte por tu profesión.",
+            calibratedExample = "Diseño software para empresas. Lo que más disfruto es resolver problemas complejos que le ahorran horas de estrés a la gente. ¿Y tú, qué es lo que más te divierte de lo que haces?"
         ),
-        VoicePracticePrompt(
-            id = "vp_2",
+        CommunicationPrompt(
+            id = "cp_2",
             category = "Storytelling & Anécdotas",
-            situationTitle = "Cuéntame algo curioso de tu semana",
-            promptQuestion = "Te piden una anécdota. Cuenta una historia breve con inicio, conflicto ligero y remate con humor sin monopolizar la charla.",
-            goalHint = "Meta: Mantén el gancho emocional y haz pausas de 1 segundo para crear expectativa."
+            situationTitle = "Cuéntame algo curioso que te haya pasado",
+            promptQuestion = "Te piden una anécdota. Redacta una historia breve con inicio, conflicto ligero y remate con humor sin monopolizar la conversación.",
+            goalHint = "Meta: Breve, con gancho emocional, sin detalles irrelevantes.",
+            calibratedExample = "El mes pasado intenté cocinar paella por primera vez para unos amigos. Casi quemo la cocina, pero el arroz quedó sorprendentemente bueno. Desde entonces me nombraron chef oficial bajo supervisión."
         ),
-        VoicePracticePrompt(
-            id = "vp_3",
+        CommunicationPrompt(
+            id = "cp_3",
             category = "Límites & Asertividad",
-            situationTitle = "Desacuerdo amable sobre una película o tema",
-            promptQuestion = "A la otra persona le encantó algo que a ti te pareció mediocre. Expresa tu punto de vista con humor y seguridad sin pedir disculpas por opinar distinto.",
-            goalHint = "Meta: Tono cálido pero firme; no digas 'perdón' ni 'no sé si me explico'."
+            situationTitle = "Desacuerdo sobre una película o tema",
+            promptQuestion = "A la otra persona le encantó una película que a ti te pareció floja. Expresa tu punto de vista con humor y seguridad sin pedir disculpas por opinar distinto.",
+            goalHint = "Meta: Tono cálido pero firme; no digas 'perdón' ni 'bueno, es solo mi opinión'.",
+            calibratedExample = "A mí la verdad me pareció predecible en el segundo acto, aunque la fotografía estuvo increíble. Me da curiosidad, ¿qué fue lo que más te atrapó de ese final?"
         ),
-        VoicePracticePrompt(
-            id = "vp_4",
+        CommunicationPrompt(
+            id = "cp_4",
             category = "Iniciativa & Liderazgo",
             situationTitle = "Proponer cambiar de lugar",
-            promptQuestion = "Llevan 1 hora en un café y quieres invitarla a caminar a un parque o a probar un postre cercano. Haz la propuesta con naturalidad.",
-            goalHint = "Meta: Propuesta clara y relajada, sin sonar suplicante ni autoritario."
+            promptQuestion = "Llevan 1 hora en una cafetería y quieres invitarla a caminar a un parque o a probar unos helados cercanos. Haz la propuesta con naturalidad.",
+            goalHint = "Meta: Propuesta clara y relajada, sin sonar suplicante ni autoritario.",
+            calibratedExample = "El café estuvo genial, pero el día está muy agradable afuera. Conozco una heladería a dos cuadras con una terraza increíble, vamos a probarla."
         ),
-        VoicePracticePrompt(
-            id = "vp_5",
+        CommunicationPrompt(
+            id = "cp_5",
             category = "Cumplido Calibrado",
             situationTitle = "Hacer un cumplido genuino",
-            promptQuestion = "Quieres elogiar su energía, su sentido del humor o un detalle único de su estilo sin caer en la adulación superficial.",
-            goalHint = "Meta: Breve, específico, contacto visual firme y sin esperar aprobación inmediata."
+            promptQuestion = "Quieres elogiar su energía, su sentido del humor o un detalle de su estilo sin caer en adulación superficial.",
+            goalHint = "Meta: Breve, específico, sin esperar validación inmediata.",
+            calibratedExample = "Me gusta mucho tu sentido del humor, tienes una energía muy espontánea que hace que la charla sea muy fácil."
         ),
-        VoicePracticePrompt(
-            id = "vp_6",
-            category = "Manejo de Silencios",
-            situationTitle = "Tolerar una pausa de 3 segundos",
-            promptQuestion = "Te hacen una pregunta profunda sobre tus metas. Haz una pausa deliberada de 2-3 segundos antes de responder con total serenidad.",
-            goalHint = "Meta: No te apresures a llenar el silencio; la pausa proyecta madurez y reflexión."
+        CommunicationPrompt(
+            id = "cp_6",
+            category = "Cierre Asertivo",
+            situationTitle = "Concluir la cita dejando interés claro",
+            promptQuestion = "La cita ha terminado y la pasaste muy bien. Despídete comunicando tu interés de volver a verla de forma relajada y clara.",
+            goalHint = "Meta: Calidez, claridad de intenciones y sin apresurar compromisos.",
+            calibratedExample = "Me la pasé increíble hoy contigo. Te escribo en la semana para coordinar la segunda vuelta."
         )
     )
 
     var currentPromptIndex by mutableStateOf(0)
     val currentPrompt get() = prompts[currentPromptIndex]
 
-    var isTextMode by mutableStateOf(false)
     var textInput by mutableStateOf("")
-    var isRecording by mutableStateOf(false)
-    var analysisResult by mutableStateOf<VoiceCoachEngine.VoiceAnalysisResult?>(null)
+    var analysisResult by mutableStateOf<CommunicationAnalysisResult?>(null)
+
+    data class CommunicationAnalysisResult(
+        val wordCount: Int,
+        val concisenessQuality: String,
+        val detectedFillerWords: List<String>,
+        val feedbackSummary: String,
+        val calibratedExample: String
+    )
 
     fun skipToNextPrompt() {
         currentPromptIndex = (currentPromptIndex + 1) % prompts.size
         analysisResult = null
         textInput = ""
-        isRecording = false
     }
 
-    fun toggleRecording() {
-        if (isRecording) {
-            isRecording = false
-            analysisResult = voiceEngine.evaluateSpeechSample(
-                durationSeconds = 25,
-                estimatedWords = 55,
-                detectedFillerWords = listOf("este", "o sea")
-            )
-        } else {
-            isRecording = true
-            analysisResult = null
-        }
-    }
-
-    fun evaluateWrittenText() {
+    fun evaluateResponse() {
         if (textInput.isBlank()) return
         val words = textInput.trim().split(Regex("\\s+"))
-        val fillerList = listOf("este", "o sea", "tipo", "literal", "como que", "eh", "mmm")
+        val fillerList = listOf("este", "o sea", "tipo", "literal", "como que", "eh", "mmm", "pues", "la verdad es que")
         val foundFillers = words.filter { w -> fillerList.any { it.equals(w, ignoreCase = true) } }
 
         val feedback = buildString {
-            append("Análisis de tu respuesta escrita (${words.size} palabras): ")
-            if (words.size in 15..60) {
-                append("Longitud óptima para mantener dinamismo. ")
+            if (words.size in 15..55) {
+                append("Longitud óptima (${words.size} palabras): Dinámica, concreta y fácil de responder. ")
             } else if (words.size < 15) {
-                append("Un poco concisa; intenta expandir con una emoción o anécdota. ")
+                append("Respuesta muy breve (${words.size} palabras): Podría sonar cortante o desinteresada; añade un detalle o pregunta de rebote. ")
             } else {
-                append("Un poco extensa; en conversación cara a cara podrías sonar como monólogo. ")
+                append("Respuesta extensa (${words.size} palabras): En una conversación cara a cara podría sonar como monólogo. ")
             }
 
             if (foundFillers.isNotEmpty()) {
-                append("Detectamos posibles muletillas escritas (${foundFillers.joinToString(", ")}). ")
+                append("Detectamos posibles muletillas (${foundFillers.joinToString(", ")}). Reemplázalas por silencios naturales. ")
             } else {
                 append("Lenguaje limpio sin muletillas detectadas. ")
             }
+
+            val textLower = textInput.lowercase()
+            if (textLower.contains("perdón") || textLower.contains("disculpa si") || textLower.contains("no sé si me explico")) {
+                append("⚠️ Evita pedir disculpas o dudar de tu propia opinión cuando expreses un gusto o perspectiva.")
+            } else {
+                append("Tono asertivo y seguro.")
+            }
         }
 
-        analysisResult = VoiceCoachEngine.VoiceAnalysisResult(
-            wordsPerMinute = 135,
-            pauseQuality = if (words.size in 15..60) "Estructura Óptima" else "Estructura Mejorable",
-            fillerWordCount = foundFillers.size,
-            feedbackSummary = feedback
+        analysisResult = CommunicationAnalysisResult(
+            wordCount = words.size,
+            concisenessQuality = if (words.size in 15..55) "Calibración Óptima" else "Calibración Mejorable",
+            detectedFillerWords = foundFillers,
+            feedbackSummary = feedback,
+            calibratedExample = currentPrompt.calibratedExample
         )
     }
 }
@@ -447,7 +450,7 @@ fun VoiceCoachScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Entrenador de Cadencia & Voz", fontWeight = FontWeight.Bold) },
+                title = { Text("Entrenador de Comunicación", fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Atrás")
@@ -473,8 +476,8 @@ fun VoiceCoachScreen(
         ) {
             item {
                 QuickTutorialBanner(
-                    title = "Tutorial: Cómo calibrar tu voz y presencia",
-                    shortDesc = "Aprende sobre ritmo (PPM), silencios cómodos y reducción de muletillas.",
+                    title = "Tutorial: Calibración y respuestas asertivas",
+                    shortDesc = "Aprende a responder con dinamismo, sin rodeos ni disculpas innecesarias.",
                     onOpenFullTutorial = { showVoiceTutorial = true }
                 )
             }
@@ -542,88 +545,37 @@ fun VoiceCoachScreen(
                 }
             }
 
-            // Selector de Modo: Micrófono vs Modo Silencioso (Texto)
+            // Entrada de Respuesta Escrita
             item {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
+                CriterioCard {
+                    Text("Tu Respuesta a la Situación", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = if (viewModel.isTextMode) "Modo Silencioso (Texto)" else "Modo Micrófono (Voz)",
-                        style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Bold
+                        "Escribe con naturalidad cómo responderías a esta situación en la vida real. Analizaremos tu estructura, concisión y asertividad.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-
-                    FilterChip(
-                        selected = viewModel.isTextMode,
-                        onClick = {
-                            viewModel.isTextMode = !viewModel.isTextMode
-                            viewModel.analysisResult = null
-                        },
-                        label = {
-                            Text(if (viewModel.isTextMode) "🎤 Usar Micrófono" else "🤫 No puedo hablar ahora (Texto)")
-                        }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    OutlinedTextField(
+                        value = viewModel.textInput,
+                        onValueChange = { viewModel.textInput = it },
+                        placeholder = { Text("Escribe tu respuesta aquí...") },
+                        modifier = Modifier.fillMaxWidth(),
+                        minLines = 3,
+                        maxLines = 6,
+                        shape = RoundedCornerShape(10.dp)
                     )
-                }
-            }
-
-            // Entrada según el modo seleccionado
-            if (viewModel.isTextMode) {
-                // Modo Silencioso / Texto
-                item {
-                    CriterioCard {
-                        Text("Práctica en Modo Silencioso", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text("Escribe cómo responderías a esta situación. Evaluaremos concisión, ausencia de muletillas y asertividad.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Spacer(modifier = Modifier.height(10.dp))
-                        OutlinedTextField(
-                            value = viewModel.textInput,
-                            onValueChange = { viewModel.textInput = it },
-                            placeholder = { Text("Escribe tu respuesta aquí...") },
-                            modifier = Modifier.fillMaxWidth(),
-                            minLines = 3,
-                            maxLines = 6,
-                            shape = RoundedCornerShape(10.dp)
-                        )
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Button(
-                            onClick = { viewModel.evaluateWrittenText() },
-                            enabled = viewModel.textInput.isNotBlank(),
-                            modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(10.dp)
-                        ) {
-                            Text("Evaluar Respuesta Escrita")
-                        }
-                    }
-                }
-            } else {
-                // Modo Grabación por Micrófono
-                item {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(10.dp),
-                        modifier = Modifier.padding(vertical = 8.dp)
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Button(
+                        onClick = { viewModel.evaluateResponse() },
+                        enabled = viewModel.textInput.isNotBlank(),
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(10.dp)
                     ) {
-                        FilledIconButton(
-                            onClick = { viewModel.toggleRecording() },
-                            modifier = Modifier.size(90.dp),
-                            colors = IconButtonDefaults.filledIconButtonColors(
-                                containerColor = if (viewModel.isRecording) RiskRed else MaterialTheme.colorScheme.primary
-                            )
-                        ) {
-                            Icon(
-                                imageVector = if (viewModel.isRecording) Icons.Default.Stop else Icons.Default.Mic,
-                                contentDescription = "Grabar",
-                                modifier = Modifier.size(40.dp)
-                            )
+                        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Icon(Icons.Default.Send, contentDescription = null)
+                            Text("Evaluar Calibración de Respuesta", fontWeight = FontWeight.Bold)
                         }
-
-                        Text(
-                            text = if (viewModel.isRecording) "Grabando muestra de voz... Toca para detener" else "Toca para grabar tu respuesta (20-30s)",
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.SemiBold
-                        )
                     }
                 }
             }
@@ -637,17 +589,24 @@ fun VoiceCoachScreen(
                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
                     ) {
                         Column(modifier = Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            Text("EVALUACIÓN DE COMUNICACIÓN", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
-                            Text("${res.wordsPerMinute} PPM — ${res.pauseQuality}", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                            Text("EVALUACIÓN DE RESPUESTA", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                            Text("${res.wordCount} Palabras — ${res.concisenessQuality}", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                             Text(res.feedbackSummary, style = MaterialTheme.typography.bodyMedium)
 
                             Spacer(modifier = Modifier.height(4.dp))
+                            HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
+                            Spacer(modifier = Modifier.height(4.dp))
+
+                            Text("EJEMPLO DE RESPUESTA CALIBRADA:", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                            Text("«${res.calibratedExample}»", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+
+                            Spacer(modifier = Modifier.height(8.dp))
                             Button(
                                 onClick = { viewModel.skipToNextPrompt() },
                                 modifier = Modifier.fillMaxWidth(),
                                 shape = RoundedCornerShape(8.dp)
                             ) {
-                                Text("Probar Otra Situación ➔")
+                                Text("Probar Siguiente Situación ➔")
                             }
                         }
                     }
@@ -657,29 +616,29 @@ fun VoiceCoachScreen(
 
         if (showVoiceTutorial) {
             ScreenTutorialDialog(
-                title = "Tutorial: Entrenador de Voz & Cadencia",
-                objective = "Aprende a transmitir seguridad, calma y claridad a través de tu ritmo vocal.",
+                title = "Tutorial: Entrenador de Comunicación",
+                objective = "Entrena tu capacidad para responder con seguridad, concisión y empatía en situaciones sociales reales.",
                 steps = listOf(
                     TutorialStep(
                         stepNumber = 1,
-                        title = "Habla con ritmo controlado (120 - 150 PPM)",
-                        description = "Hablar demasiado rápido transmite nerviosismo o urgencia. Hablar con calma proyecta comodidad y confianza."
+                        title = "Lee el contexto y objetivo",
+                        description = "Cada situación simula una interacción cotidiana (citas, límites, desacuerdos, presentaciones)."
                     ),
                     TutorialStep(
                         stepNumber = 2,
-                        title = "Tolera los silencios y haz pausas",
-                        description = "No llenes cada segundo con muletillas ('ehhh', 'este', 'o sea'). Una pausa de 2 segundos denota seguridad."
+                        title = "Escribe tu respuesta espontánea",
+                        description = "Responde como lo harías en la vida real. Evita sobre-analizar."
                     ),
                     TutorialStep(
                         stepNumber = 3,
-                        title = "Omitir o cambiar situaciones",
-                        description = "Si no deseas responder una pregunta o no puedes usar el micrófono, pulsa 'Omitir' o activa el 'Modo Silencioso'."
+                        title = "Revisa tu diagnóstico y compara",
+                        description = "Evalúa si caíste en rodeos, disculpas innecesarias o monólogos, y compáralo con el ejemplo calibrado."
                     )
                 ),
-                practicalExample = "En una cita, en lugar de apresurarte a responder antes de que termine, haz una pausa de 1 segundo, sonríe y responde pausadamente.",
+                practicalExample = "Si te preguntan algo donde opinas distinto, en lugar de pedir perdón o fingir acuerdo, expresas tu gusto con humor y preguntas por la perspectiva del otro.",
                 commonMistakes = listOf(
-                    "No fuerces una voz grave artificial; la autenticidad y la respiración diafragmática son lo natural.",
-                    "No le temas a los silencios compartidos."
+                    "No des explicaciones no solicitadas ni te justifiques de más.",
+                    "No memorices respuestas palabra por palabra; interioriza la asertividad y la naturalidad."
                 ),
                 onDismiss = { showVoiceTutorial = false }
             )
