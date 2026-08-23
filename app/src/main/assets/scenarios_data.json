@@ -1,0 +1,82 @@
+[
+  {
+    "id": "scen_cafe",
+    "title": "Encuentro en una Cafetería",
+    "category": "ENTORNO_CASUAL",
+    "difficulty": "PRINCIPIANTE",
+    "context": "Estás en una cafetería tranquila. En la mesa de al lado, una mujer está leyendo un libro sobre filosofía que tú conoces bien. Ella bebe su café tranquilamente y parece relajada.",
+    "personaName": "Sofía",
+    "personaRole": "Lectora habitual, amable pero reservada",
+    "personaOpening": "Disculpa, ¿sabes si hay algún enchufe cerca de esta mesa?",
+    "initialPrompt": "Sofía te pregunta con cortesía por un enchufe mientras sostiene su cargador.",
+    "scoringRubric": {
+      "clarityWeight": 0.25,
+      "pressureWeight": 0.35,
+      "contextReadingWeight": 0.4
+    }
+  },
+  {
+    "id": "scen_dating_app",
+    "title": "Manejo de Mensajes Secos en Dating Apps",
+    "category": "DIGITAL_MESSAGING",
+    "difficulty": "INTERMEDIO",
+    "context": "Hiciste match en una app hace dos días. Tuvieron una charla divertida sobre viajes, pero su última respuesta fue simplemente: 'Jajaja sí'.",
+    "personaName": "Renata",
+    "personaRole": "Diseñadora, ocupada, interesada si la charla no es cliché",
+    "personaOpening": "Jajaja sí",
+    "initialPrompt": "Renata ha respondido con un mensaje corto y seco a tu anécdota anterior.",
+    "scoringRubric": {
+      "clarityWeight": 0.3,
+      "pressureWeight": 0.4,
+      "contextReadingWeight": 0.3
+    }
+  },
+  {
+    "id": "scen_first_date",
+    "title": "Primera Cita: Conversación Balanceada",
+    "category": "CITAS",
+    "difficulty": "INTERMEDIO",
+    "context": "Están en un bar tranquilo en su primera cita. Acaban de pedir sus bebidas. La conversación recién comienza.",
+    "personaName": "Mariana",
+    "personaRole": "Curiosa, evalúa autenticidad y buen sentido del humor",
+    "personaOpening": "Y bueno, cuéntame algo que no esté en tu perfil... ¿qué te apasiona hacer cuando nadie te está mirando?",
+    "initialPrompt": "Mariana te mira sonriendo y te hace una pregunta abierta e interesante.",
+    "scoringRubric": {
+      "clarityWeight": 0.3,
+      "pressureWeight": 0.3,
+      "contextReadingWeight": 0.4
+    }
+  },
+  {
+    "id": "scen_rejection",
+    "title": "Recepción Elegante de un Rechazo",
+    "category": "MANEJO_RECHAZO",
+    "difficulty": "AVANZADO",
+    "context": "Han salido dos veces. Tras la segunda cita, le propones un tercer plan y ella te envía este mensaje:",
+    "personaName": "Camila",
+    "personaRole": "Honesta y respetuosa",
+    "personaOpening": "Hola, la pasé súper bien en nuestras salidas, pero siendo honesta siento que conectamos más como amigos y no estoy buscando algo romántico.",
+    "initialPrompt": "Camila te ha comunicado con claridad que no siente química romántica.",
+    "scoringRubric": {
+      "clarityWeight": 0.35,
+      "pressureWeight": 0.4,
+      "contextReadingWeight": 0.25
+    }
+  },
+  {
+    "id": "scen_gym",
+    "title": "Gimnasio: Calibración y Espacio Personal",
+    "category": "ENTORNO_SENSIBLE",
+    "difficulty": "AVANZADO",
+    "context": "Estás en la zona de pesas. Una chica está haciendo su rutina con audífonos puestos y concentrada en sus series.",
+    "personaName": "Lucía",
+    "personaRole": "Atleta enfocada, no le gusta ser interrumpida durante sus series",
+    "personaOpening": "(Está descansando entre series mirando su cronómetro)",
+    "initialPrompt": "Considera el contexto: tiene audífonos y cronómetro. ¿Cuál es la forma más respetuosa y calibrada de interactuar si necesitas compartir la máquina?",
+    "scoringRubric": {
+      "clarityWeight": 0.3,
+      "pressureWeight": 0.4,
+      "contextReadingWeight": 0.3
+    }
+  }
+]

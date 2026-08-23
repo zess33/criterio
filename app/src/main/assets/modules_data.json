@@ -1,0 +1,575 @@
+[
+  {
+    "id": "mod_0",
+    "levelIndex": 0,
+    "title": "Nivel 0 — Fundamentos y Presencia",
+    "description": "Bases esenciales de autoestima, presentación personal, lenguaje corporal, contacto visual, modulación vocal y superación del miedo inicial.",
+    "category": "FUNDAMENTOS",
+    "requiredScore": 0,
+    "estimatedMinutes": 45,
+    "lessons": [
+      {
+        "id": "les_0_1",
+        "orderIndex": 1,
+        "title": "Autoestima Real vs Validación Externa",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "La autoestima no es sentirse superior a los demás, sino no necesitar la aprobación ajena para validar el propio valor. Cuando buscas desesperadamente agradar, actúas desde la necesidad y la sumisión.",
+        "examples": [
+          "Expresar tus gustos con tranquilidad aunque difieran de los de tu interlocutora.",
+          "Poder decir 'no me gusta ese plan' sin miedo a que la persona se aleje."
+        ],
+        "counterExamples": [
+          "Cambiar de opinión inmediatamente cuando la otra persona muestra desacuerdo.",
+          "Comprar regalos caros en la primera cita para 'ganarte' su interés."
+        ],
+        "commonErrors": [
+          "Confundir arrogancia con seguridad.",
+          "Creer que la aprobación femenina te otorgará valor como hombre."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfCu\\u00e1l es la diferencia clave entre seguridad genuina y necesidad de aprobaci\\u00f3n?\", \"options\": [\"La seguridad genuina no requiere que la otra persona valide tus opiniones o decisiones.\", \"La seguridad genuina consiste en imponer tu punto de vista en cualquier discusi\\u00f3n.\", \"La necesidad de aprobaci\\u00f3n es buena porque demuestra humildad y cortes\\u00eda.\"], \"correctIndex\": 0, \"explanation\": \"La seguridad radica en la congruencia interna; no depende de la reacci\\u00f3n del entorno.\"}"
+      },
+      {
+        "id": "les_0_2",
+        "orderIndex": 2,
+        "title": "Lenguaje Corporal, Contacto Visual y Voz",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "La comunicación no verbal comunica tu nivel de calma y presencia. El contacto visual sostenido (sin mirar fijamente de forma agresiva), una postura abierta y un tono de voz pausado transmiten tranquilidad.",
+        "examples": [
+          "Mantener contacto visual cómodo con pausas naturales.",
+          "Hombros relajados, respiración diafragmática y hablar sin prisa."
+        ],
+        "counterExamples": [
+          "Mirar al suelo o esquivar la mirada constantemente al hablar.",
+          "Cruzar los brazos y mirar el reloj cada 30 segundos."
+        ],
+        "commonErrors": [
+          "Forzar una postura rígida que parece antinatural.",
+          "Hablar demasiado rápido creyendo que así no aburres."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfQu\\u00e9 comunica hablar a un ritmo pausado y con respiraci\\u00f3n relajada?\", \"options\": [\"Falta de energ\\u00eda y desinter\\u00e9s.\", \"Control emocional, claridad cognitiva y ausencia de urgencia ansiosa.\", \"Indiferencia calculada.\"], \"correctIndex\": 1, \"explanation\": \"La calma en la voz denota que est\\u00e1s c\\u00f3modo en tu propia piel y no temes ser escuchado.\"}"
+      },
+      {
+        "id": "les_0_3",
+        "orderIndex": 3,
+        "title": "Miedo al Rechazo y Desensibilización",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "El rechazo no es un veredicto sobre tu valor como ser humano; es simplemente una incompatibilidad contextual de intereses o momentos vitales.",
+        "examples": [
+          "Aceptar una negativa con una sonrisa y continuar tu día con naturalidad.",
+          "Entender que una persona tiene derecho a no sentirse atraída sin que eso signifique que hiciste algo mal."
+        ],
+        "counterExamples": [
+          "Tomar el rechazo como un ataque personal o una prueba de insuficiencia.",
+          "Insistir o pedir explicaciones tras un 'no' claro."
+        ],
+        "commonErrors": [
+          "Evitar interactuar por completo para no experimentar incomodidad.",
+          "Guardar rencor hacia las personas que no corresponden tu interés."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfPor qu\\u00e9 un rechazo no es un veredicto sobre tu valor personal?\", \"options\": [\"Porque las personas eligen seg\\u00fan sus propias preferencias, momentos y compatibilidad, no seg\\u00fan un ranking universal.\", \"Porque quien te rechaza siempre se equivoc\\u00f3.\", \"Porque el rechazo es s\\u00f3lo una t\\u00e9cnica de coqueteo.\"], \"correctIndex\": 0, \"explanation\": \"Las preferencias individuales son subjetivas y contextuales; no existe una jerarqu\\u00eda objetiva de valor personal.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_1",
+    "levelIndex": 1,
+    "title": "Nivel 1 — Dinámicas de Conversación",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Aperturas contextuales, preguntas abiertas, escucha activa, evitar interrogatorios, storytelling y saber cuándo cerrar una interacción.",
+    "category": "CONVERSACION",
+    "requiredScore": 100,
+    "estimatedMinutes": 50,
+    "lessons": [
+      {
+        "id": "les_1_1",
+        "orderIndex": 1,
+        "title": "Aperturas Contextuales vs Frases Prehechas",
+        "evidenceLevel": "MODERATE_EVIDENCE",
+        "conceptExplanation": "Las mejores conversaciones surgen de observar el entorno compartido en tiempo real, no de memorizar frases enlatadas o trucos de internet.",
+        "examples": [
+          "Comentar con naturalidad sobre el libro que está leyendo o la música del lugar.",
+          "Hacer una observación graciosa y ligera sobre la situación del momento."
+        ],
+        "counterExamples": [
+          "Usar piropos genéricos copiados de videos de TikTok.",
+          "Hacer cumplidos forzados sobre el físico en los primeros 3 segundos."
+        ],
+        "commonErrors": [
+          "Pensar que necesitas una frase mágica para que alguien te preste atención.",
+          "Ignorar el lenguaje corporal de incomodidad de la otra persona."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfPor qu\\u00e9 son m\\u00e1s efectivas las observaciones contextuales que las frases prefabricadas?\", \"options\": [\"Porque son aut\\u00e9nticas, adaptadas al momento y no generan la sensaci\\u00f3n de estar siendo evaluado con un guion.\", \"Porque confunden a la otra persona.\", \"Porque son m\\u00e1s dif\\u00edciles de memorizar.\"], \"correctIndex\": 0, \"explanation\": \"La naturalidad reduce las defensas sociales y abre un espacio de interacci\\u00f3n espont\\u00e1nea.\"}"
+      },
+      {
+        "id": "les_1_2",
+        "orderIndex": 2,
+        "title": "Escucha Activa vs Interrogatorio",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "Una conversación fluida no es una batería de preguntas (¿dónde trabajas? ¿dónde vives? ¿tienes hermanos?). Es un intercambio de reflexiones, anécdotas y emociones.",
+        "examples": [
+          "Preguntar: '¿Qué fue lo que más te apasionó de ese proyecto?' y construir sobre su respuesta.",
+          "Compartir una breve experiencia propia antes de invitar a la otra persona a comentar."
+        ],
+        "counterExamples": [
+          "Disparar 5 preguntas seguidas sin profundizar en ninguna respuesta.",
+          "Estar pensando en lo siguiente que vas a decir en lugar de escuchar lo que te están diciendo."
+        ],
+        "commonErrors": [
+          "Monopolizar la conversación hablando solo de tus logros.",
+          "Hacer preguntas tipo encuesta que se responden con sí o no."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfC\\u00f3mo evitas que una conversaci\\u00f3n se sienta como un interrogatorio policial?\", \"options\": [\"Alternando preguntas abiertas con aportes personales e interpretaciones curiosas sobre lo que ella comparte.\", \"Haciendo m\\u00e1s de 20 preguntas cerradas en 5 minutos.\", \"No haciendo ninguna pregunta y hablando s\\u00f3lo t\\u00fa.\"], \"correctIndex\": 0, \"explanation\": \"La reciprocidad conversacional combina indagaci\\u00f3n genuina con vulnerabilidad y aportes propios.\"}"
+      },
+      {
+        "id": "les_1_3",
+        "orderIndex": 3,
+        "title": "El Arte de Concluir una Conversación a Tiempo",
+        "evidenceLevel": "MODERATE_EVIDENCE",
+        "conceptExplanation": "Saber retirarse en un punto alto de la interacción genera respeto por el tiempo de ambos y evita que la conversación se vuelva pesada o incómoda.",
+        "examples": [
+          "'Ha sido un gusto charlar contigo, me tengo que reunir con unos amigos. Si te apetece, intercambiamos contactos y seguimos otro día.'",
+          "Notar señales de prisa o cansancio y facilitar una salida cordial sin resentimiento."
+        ],
+        "counterExamples": [
+          "Alargar la interacción a la fuerza cuando la otra persona ya dio señales de querer irse.",
+          "Quedarse en silencio incómodo esperando que ella termine la conversación."
+        ],
+        "commonErrors": [
+          "Sentir que terminar la conversación primero es grosero.",
+          "Pedir el contacto de forma insistente cuando la charla no fluyó."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfCu\\u00e1l es la ventaja de cerrar una conversaci\\u00f3n en su momento \\u00f3ptimo?\", \"options\": [\"Demuestra respeto mutuo, calibraci\\u00f3n social y deja una impresi\\u00f3n positiva y liviana.\", \"Obliga a la otra persona a perseguirte desesperadamente.\", \"Ninguna, siempre hay que hablar hasta que te echen.\"], \"correctIndex\": 0, \"explanation\": \"Cerrar con elegancia denota alta inteligencia social y autonom\\u00eda.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_2",
+    "levelIndex": 2,
+    "title": "Nivel 2 — Confianza, Límites y Autenticidad",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Establecimiento de límites saludables, honestidad emocional, cómo erradicar la necesidad de aparentar y construcción de autoestima sólida.",
+    "category": "CONFIANZA",
+    "requiredScore": 200,
+    "estimatedMinutes": 45,
+    "lessons": [
+      {
+        "id": "les_2_1",
+        "orderIndex": 1,
+        "title": "Límites Personales: La Piedra Angular del Respeto",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "No puedes esperar que otros respeten tus límites si tú mismo estás dispuesto a traicionarlos para agradar. Un 'no' oportuno protege tu dignidad y establece bases sanas.",
+        "examples": [
+          "Expresar con serenidad: 'No me siento cómodo con que canceles planes a última hora sin avisar.'",
+          "Rechazar prestar dinero o hacer favores desproporcionados a personas recién conocidas."
+        ],
+        "counterExamples": [
+          "Aceptar tratos irrespetuosos por miedo a que la persona se enoje o se vaya.",
+          "Pedir disculpas por expresar tus necesidades básicas."
+        ],
+        "commonErrors": [
+          "Poner límites con agresividad o resentimiento acumulado.",
+          "Creer que ser 'bueno' significa ser complaciente en todo."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfQu\\u00e9 ocurre cuando una persona nunca pone l\\u00edmites por miedo a perder a alguien?\", \"options\": [\"Fomenta din\\u00e1micas de desequilibrio, resentimiento interno y p\\u00e9rdida progresiva de respeto mutuo.\", \"Garantiza una relaci\\u00f3n armoniosa y duradera para siempre.\", \"Demuestra un amor incondicional saludable.\"], \"correctIndex\": 0, \"explanation\": \"La complacencia cr\\u00f3nica genera resentimiento y deteriora la autoestima.\"}"
+      },
+      {
+        "id": "les_2_2",
+        "orderIndex": 2,
+        "title": "Autenticidad vs Máscaras Sociales",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "Fingir ser un 'hombre exitoso / rudo / perfecto' es agotador e insostenible. La verdadera atracción a largo plazo solo puede construirse sobre la autenticidad.",
+        "examples": [
+          "Admitir con humor que no sabes nada de un tema en lugar de inventar.",
+          "Mostrar tus verdaderos intereses aunque no sean considerados 'populares'."
+        ],
+        "counterExamples": [
+          "Alquilar autos caros o presumir marcas para impresionar a una cita.",
+          "Fingir estar de acuerdo con todo lo que la otra persona dice."
+        ],
+        "commonErrors": [
+          "Confundir autenticidad con falta de filtro social o grosería.",
+          "Creer que tu versión real no es suficiente."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfPor qu\\u00e9 es contraproducente utilizar una m\\u00e1scara de personaje?\", \"options\": [\"Porque atraes a personas compatibles con la m\\u00e1scara y no contigo, lo que garantiza el fracaso a largo plazo.\", \"Porque es m\\u00e1s divertido ser otra persona.\", \"Porque nadie nota las m\\u00e1scaras.\"], \"correctIndex\": 0, \"explanation\": \"La compatibilidad real requiere conocer a la persona real.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_3",
+    "levelIndex": 3,
+    "title": "Nivel 3 — Atracción, Coqueteo y Reciprocidad",
+    "evidenceLevel": "MODERATE_EVIDENCE",
+    "description": "Demostrar interés genuino, tensión sana, cumplidos bien calibrados, señales de interés y desinterés, y saber cuándo avanzar o detenerse.",
+    "category": "ATRACCION",
+    "requiredScore": 300,
+    "estimatedMinutes": 55,
+    "lessons": [
+      {
+        "id": "les_3_1",
+        "orderIndex": 1,
+        "title": "Claridad y Demostración de Interés sin Acoso",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "Demostrar interés romántico de forma respetuosa y clara es atractivo. La ambigüedad eterna ('amigo oculto') genera confusión y frustración para ambas partes.",
+        "examples": [
+          "'Me encanta conversar contigo, pero me gustaría invitarte a una cita para conocernos mejor.'",
+          "Hacer un cumplido sobre su sentido del humor o su perspectiva con sinceridad."
+        ],
+        "counterExamples": [
+          "Hacer favores durante meses esperando que 'mágicamente' se dé cuenta de que te gusta.",
+          "Enviar mensajes sexualmente explícitos sin haber establecido confianza ni consentimiento previo."
+        ],
+        "commonErrors": [
+          "Pensar que mostrar interés te hace vulnerable o 'débil'.",
+          "Confundir persistencia no solicitada con perseverancia romántica."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfCu\\u00e1l es la forma m\\u00e1s sana de comunicar atracci\\u00f3n inicial?\", \"options\": [\"De forma directa, educada, sin presiones y respetando plenamente la respuesta de la otra persona.\", \"Con indirectas ambiguas para nunca arriesgarte al rechazo.\", \"Ignor\\u00e1ndola por completo para que se sienta insegura.\"], \"correctIndex\": 0, \"explanation\": \"La asertividad rom\\u00e1ntica es clara y respeta la autonom\\u00eda del otro.\"}"
+      },
+      {
+        "id": "les_3_2",
+        "orderIndex": 2,
+        "title": "Lectura de Reciprocidad vs Señales Aisladas",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "Ninguna señal aislada (una sonrisa, un emoji, mirar el cabello) demuestra interés por sí sola. La única métrica confiable es el patrón consistente de reciprocidad en tiempo, iniciativa y esfuerzo.",
+        "examples": [
+          "Si ella no puede un día, propone una fecha alternativa: 'Hoy no puedo, ¿qué tal el jueves?'.",
+          "Inicia conversaciones y muestra curiosidad genuina por tus planes."
+        ],
+        "counterExamples": [
+          "Asumir que porque una cajera sonrió amablemente está coqueteando contigo.",
+          "Creer que un 'jajaja' en un chat significa que está enamorada."
+        ],
+        "commonErrors": [
+          "Analizar obsesivamente el micro-comportamiento en lugar del panorama general.",
+          "Ignorar el desinterés evidente esperando que 'cambie de opinión'."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfQu\\u00e9 constituye una prueba real de inter\\u00e9s en una din\\u00e1mica interpersonal?\", \"options\": [\"Un patr\\u00f3n observable de reciprocidad, iniciativa y disponibilidad mutua en el tiempo.\", \"Un mensaje de WhatsApp enviado a las 3 AM.\", \"Que te mire durante 2 segundos en una reuni\\u00f3n.\"], \"correctIndex\": 0, \"explanation\": \"El inter\\u00e9s genuino se traduce en hechos y acciones sostenidas, no en micro-gestos aislados.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_4",
+    "levelIndex": 4,
+    "title": "Nivel 4 — Citas, Finanzas y Consentimiento",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Logística de primeras citas, dinámica económica (50/50 y reciprocidad), contacto físico respetuoso, consentimiento activo y lectura de química.",
+    "category": "CITAS",
+    "requiredScore": 400,
+    "estimatedMinutes": 60,
+    "lessons": [
+      {
+        "id": "les_4_1",
+        "orderIndex": 1,
+        "title": "Diseño de la Primera Cita: Ambiente y Logística",
+        "evidenceLevel": "MODERATE_EVIDENCE",
+        "conceptExplanation": "Una buena primera cita debe priorizar la comodidad, la conversación sin ruidos excesivos y una logística sencilla que permita extender o concluir el plan con facilidad.",
+        "examples": [
+          "Un café en una zona agradable o una caminata por un parque o museo.",
+          "Un lugar que ambos puedan pagar cómodamente y donde se pueda conversar mirándose."
+        ],
+        "counterExamples": [
+          "Una cena de 5 platos en un restaurante ultra formal donde el ambiente es rígido y costoso.",
+          "Ir al cine donde pasan 2 horas a oscuras sin poder hablar."
+        ],
+        "commonErrors": [
+          "Gastar más de lo que tu presupuesto permite para aparentar.",
+          "No tener un plan B en caso de que el lugar esté cerrado o lleno."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfPor qu\\u00e9 un plan din\\u00e1mico y conversacional es mejor para una primera cita que una cena costosa?\", \"options\": [\"Porque reduce la presi\\u00f3n para ambos, facilita el di\\u00e1logo y permite evaluar la qu\\u00edmica real con naturalidad.\", \"Porque es la \\u00fanica forma de no gastar dinero.\", \"Porque a las personas no les gusta la buena comida.\"], \"correctIndex\": 0, \"explanation\": \"El objetivo de la primera cita es conocerse mutuamente, no deslumbrar materialmente.\"}"
+      },
+      {
+        "id": "les_4_2",
+        "orderIndex": 2,
+        "title": "Dinero, Quién Paga y Reciprocidad Real",
+        "evidenceLevel": "MODERATE_EVIDENCE",
+        "conceptExplanation": "El debate del '50/50 vs quien invita' no debe verse como una regla moral rígida. La clave es la reciprocidad: valorar la consideración, el agradecimiento y el equilibrio general de esfuerzos.",
+        "examples": [
+          "Si tú invitaste la cena, que la otra persona ofrezca el café o postre, o agradezca con genuina cortesía.",
+          "Hablar con madurez sobre el presupuesto en citas posteriores."
+        ],
+        "counterExamples": [
+          "Exigir una división matemática al centavo si tú propusiste un restaurante carísimo.",
+          "Asumir que pagar una cuenta te otorga 'derechos' sobre el tiempo o el cuerpo de otra persona."
+        ],
+        "commonErrors": [
+          "Etiquetar a alguien de 'aprovechada' por un solo malentendido en la cuenta.",
+          "Tolerar una actitud de derecho absoluto ('tú debes pagarme todo siempre')."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfQu\\u00e9 diferencia al 50/50 matem\\u00e1tico de la reciprocidad real?\", \"options\": [\"La reciprocidad eval\\u00faa el equilibrio integral de consideraci\\u00f3n, esfuerzo y agradecimiento mutuo seg\\u00fan el contexto.\", \"El 50/50 matem\\u00e1tico es la \\u00fanica forma de respeto que existe.\", \"La reciprocidad s\\u00f3lo cuenta si se transfiere dinero por transferencia bancaria.\"], \"correctIndex\": 0, \"explanation\": \"La reciprocidad es una actitud de mutuo cuidado y contribuci\\u00f3n, no una simple factura contable.\"}"
+      },
+      {
+        "id": "les_4_3",
+        "orderIndex": 3,
+        "title": "Consentimiento Activo y Contacto Progresivo",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "El consentimiento no es un trámite burocrático; es una sintonía continua basada en el entusiasmo y la comodidad mutua. Ante la menor duda o incomodidad, la regla es pausar.",
+        "examples": [
+          "Prestar atención a si la otra persona se inclina hacia ti o se aleja ante el contacto físico.",
+          "Preguntar con calidez y naturalidad: '¿Estás cómoda?' o '¿Quieres que nos besemos?'."
+        ],
+        "counterExamples": [
+          "Intentar forzar un beso cuando la otra persona mantiene distancia o cruza los brazos.",
+          "Asumir que el silencio o la falta de resistencia física equivale a consentimiento entusiasta."
+        ],
+        "commonErrors": [
+          "Creer que pedir consentimiento 'mata la pasión' (en realidad genera seguridad y confianza).",
+          "Presionar emocionalmente tras una negativa."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfQu\\u00e9 debes hacer si notas que tu cita se tensa o retrocede ante un gesto de cercan\\u00eda f\\u00edsica?\", \"options\": [\"Retirar suavemente el contacto, dar espacio y continuar conversando con total tranquilidad y respeto.\", \"Insistir m\\u00e1s fuerte para demostrar 'dominancia'.\", \"Ofenderte y reclamarle por qu\\u00e9 se alej\\u00f3.\"], \"correctIndex\": 0, \"explanation\": \"Respetar el espacio ajeno demuestra madurez emocional y construye un entorno seguro.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_5",
+    "levelIndex": 5,
+    "title": "Nivel 5 — Relaciones, Conflictos y Proyectos",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Construcción de acuerdos claros, gestión de celos, comunicación no violenta, resolución de conflictos, finanzas y alineación de proyectos de vida.",
+    "category": "RELACIONES",
+    "requiredScore": 500,
+    "estimatedMinutes": 60,
+    "lessons": [
+      {
+        "id": "les_5_1",
+        "orderIndex": 1,
+        "title": "Gestión de Conflictos: Atacar el Problema, no a la Persona",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "En una relación sana, los desacuerdos no son una competencia de 'quién gana', sino un trabajo en equipo contra una dificultad compartida. Evita los 4 jinetes del apocalipsis relacional (crítica destructiva, desprecio, actitud defensiva y evasión).",
+        "examples": [
+          "Usar enunciados en primera persona: 'Me sentí abrumado cuando...' en lugar de 'Tú siempre arruinas todo...'",
+          "Tomar una pausa de 20 minutos para calmar el ritmo cardíaco antes de continuar una discusión acalorada."
+        ],
+        "counterExamples": [
+          "Sacar a relucir errores de hace tres años en medio de una discusión actual.",
+          "Aplicar la ley del hielo (silent treatment) como castigo emocional."
+        ],
+        "commonErrors": [
+          "Querer 'ganar' la discusión en lugar de entender el origen del malestar.",
+          "Guardar rencores sin hablarlos hasta explotar."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfCu\\u00e1l es la estrategia m\\u00e1s eficaz ante una discusi\\u00f3n de pareja que sube de tono?\", \"options\": [\"Pausar la conversaci\\u00f3n de mutuo acuerdo para regular las emociones y retomarla desde la empat\\u00eda y la resoluci\\u00f3n de problemas.\", \"Gritar m\\u00e1s fuerte para que tu argumento sea escuchado.\", \"Bloquear a la persona en redes sociales durante dos d\\u00edas.\"], \"correctIndex\": 0, \"explanation\": \"La autorregulaci\\u00f3n emocional previene el desbordamiento fisiol\\u00f3gico que destruye la comunicaci\\u00f3n.\"}"
+      },
+      {
+        "id": "les_5_2",
+        "orderIndex": 2,
+        "title": "Celos: Origen, Manejo y Distinción de Hechos",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "Los celos son una señal de miedo a la pérdida o inseguridad personal. Deben gestionarse comunicando vulnerabilidad ('me sentí inseguro') y no mediante conductas de control (revisar celulares, prohibir amistades).",
+        "examples": [
+          "Reconocer tu propia inseguridad y hablar de tus límites con serenidad.",
+          "Diferenciar entre un comportamiento objetivamente ambiguo de la pareja y una proyección de tus propios traumas pasados."
+        ],
+        "counterExamples": [
+          "Exigir las contraseñas de las redes sociales de tu pareja.",
+          "Hacer escenas públicas de reclamo sin evidencia objetiva."
+        ],
+        "commonErrors": [
+          "Pensar que los celos son una 'prueba de amor'.",
+          "Ignorar banderas rojas reales por miedo a parecer celoso."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfC\\u00f3mo se distingue un l\\u00edmite saludable de una conducta de control celosa?\", \"options\": [\"Un l\\u00edmite define lo que T\\u00da aceptas o no en tu vida; el control busca coartar la libertad y autonom\\u00eda de la OTRA persona.\", \"No hay diferencia, son lo mismo.\", \"El control siempre es necesario para que no te sean infieles.\"], \"correctIndex\": 0, \"explanation\": \"Tus l\\u00edmites regulan tus decisiones de permanencia; el control intenta vigilar a la otra persona.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_6",
+    "levelIndex": 6,
+    "title": "Nivel 6 — Psicología Práctica y Apego",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Estilos de apego (seguro, ansioso, evitativo), mecanismos de defensa, proyección psicológica y regulación emocional sin caer en diagnósticos amateurs.",
+    "category": "PSICOLOGIA",
+    "requiredScore": 600,
+    "estimatedMinutes": 55,
+    "lessons": [
+      {
+        "id": "les_6_1",
+        "orderIndex": 1,
+        "title": "Teoría del Apego en Adultos",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "Los estilos de apego describen cómo respondemos ante la intimidad y la amenaza de abandono. Conocer tu estilo te permite regular tus reacciones automáticas sin etiquetar patológicamente a los demás.",
+        "examples": [
+          "Apego seguro: Comunica necesidades claramente y tolera la independencia mutua.",
+          "Apego ansioso: Tiende a buscar reaseguro constante y sobreinterpretar silencios.",
+          "Apego evitativo: Se repliega o distancia ante la vulnerabilidad emocional."
+        ],
+        "counterExamples": [
+          "Usar la etiqueta 'eres evitativa' como insulto o excusa para justificar el acoso.",
+          "Diagnosticar trastornos de personalidad en personas con las que saliste dos semanas."
+        ],
+        "commonErrors": [
+          "Creer que los estilos de apego son inmutables.",
+          "Caer en la trampa del baile 'ansioso-evitativo' sin poner límites."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfCu\\u00e1l es el prop\\u00f3sito principal de comprender la teor\\u00eda del apego?\", \"options\": [\"Identificar tus propios disparadores emocionales para responder con mayor madurez y elegir parejas disponibles.\", \"Tener argumentos para diagnosticar y culpar a tus ex parejas.\", \"Aprender a manipular la mente de las personas.\"], \"correctIndex\": 0, \"explanation\": \"El autoconocimiento es la base para transitar hacia un apego seguro y relaciones estables.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_7",
+    "levelIndex": 7,
+    "title": "Nivel 7 — Pensamiento Crítico y Sesgos",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Correlación vs causalidad, sesgo de confirmación, efecto halo, falacia del francotirador, anécdota vs evidencia y superación de cámaras de eco.",
+    "category": "PENSAMIENTO_CRITICO",
+    "requiredScore": 700,
+    "estimatedMinutes": 50,
+    "lessons": [
+      {
+        "id": "les_7_1",
+        "orderIndex": 1,
+        "title": "Sesgo de Confirmación y Falacias de Generalización",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "El cerebro tiende a buscar y recordar únicamente la información que confirma sus creencias previas, ignorando la evidencia contraria. Decir 'todas las mujeres son X' porque tuviste 2 malas experiencias es una falacia de generalización apresurada.",
+        "examples": [
+          "Reconocer: 'Mi experiencia negativa con una persona no define al 50% de la población mundial.'",
+          "Buscar activamente explicaciones alternativas antes de concluir que alguien tiene malas intenciones."
+        ],
+        "counterExamples": [
+          "Consumir exclusivamente videos de redes sociales que alimentan el resentimiento de género.",
+          "Ignorar las conductas amables de alguien y enfocarse sólo en un error para justificar tu desconfianza."
+        ],
+        "commonErrors": [
+          "Confundir 'muchos likes en un video de TikTok' con evidencia científica.",
+          "Creer que tu experiencia personal representa la verdad estadística global."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfPor qu\\u00e9 es irracional afirmar 'todas las personas son infieles' bas\\u00e1ndose en una an\\u00e9cdota personal?\", \"options\": [\"Porque una muestra de tama\\u00f1o N=1 o N=2 carece de representatividad estad\\u00edstica y est\\u00e1 sesgada por selecci\\u00f3n personal.\", \"Porque las personas nunca mienten.\", \"Porque las an\\u00e9cdotas siempre son m\\u00e1s v\\u00e1lidas que los estudios rigurosos.\"], \"correctIndex\": 0, \"explanation\": \"La representatividad y el tama\\u00f1o de muestra son esenciales para cualquier inferencia v\\u00e1lida.\"}"
+      },
+      {
+        "id": "les_7_2",
+        "orderIndex": 2,
+        "title": "Efecto Halo y Sobrevaloración Inicial",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "El efecto halo ocurre cuando atribuimos virtudes morales o de personalidad (inteligencia, bondad, empatía) a alguien simplemente porque nos resulta físicamente atractiva.",
+        "examples": [
+          "Evaluar la compatibilidad y el carácter de una persona a través de sus acciones a lo largo de meses, no de su apariencia.",
+          "Recordar que el atractivo físico no garantiza madurez emocional ni reciprocidad."
+        ],
+        "counterExamples": [
+          "Justificar faltas de respeto o malos tratos porque la persona es muy atractiva.",
+          "Pensar que alguien 'debe ser perfecta' antes de haber conversado con ella más de una hora."
+        ],
+        "commonErrors": [
+          "Idealizar a personas que apenas conoces.",
+          "Proyectar tus deseos sobre la realidad de la otra persona."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfC\\u00f3mo se neutraliza el Efecto Halo en el dating?\", \"options\": [\"Observando la consistencia entre sus palabras y acciones a trav\\u00e9s del tiempo, sin asumir cualidades que no ha demostrado.\", \"Tratando mal a las personas atractivas.\", \"Fij\\u00e1ndose \\u00fanicamente en su signo del zod\\u00edaco.\"], \"correctIndex\": 0, \"explanation\": \"El tiempo y la observaci\\u00f3n objetiva revelan el verdadero car\\u00e1cter y valores.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_8",
+    "levelIndex": 8,
+    "title": "Nivel 8 — Estadística, Muestreo e Incertidumbre",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Tasas base, sesgo de selección en apps de citas, tamaños muestrales, variabilidad humana y cómo tolerar la incertidumbre social sin angustia.",
+    "category": "ESTADISTICA",
+    "requiredScore": 800,
+    "estimatedMinutes": 50,
+    "lessons": [
+      {
+        "id": "les_8_1",
+        "orderIndex": 1,
+        "title": "Sesgo de Selección en Redes y Dating Apps",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "Los usuarios más activos o extremos en redes sociales no representan al promedio de la población. Las apps y los algoritmos premian el contenido polarizante (rage bait), creando una ilusión de conflicto generalizado.",
+        "examples": [
+          "Comprender que los videos virales de 'hombres de alto valor' o 'mujeres exigiendo sueldos millonarios' son creados para monetizar clics y no reflejan la vida real.",
+          "Saber que conocer personas en clubes o apps atrae un subconjunto con dinámicas muy distintas a las de grupos de voluntariado o clubes de lectura."
+        ],
+        "counterExamples": [
+          "Creer que el comportamiento de los influencers representa a las mujeres reales de tu comunidad.",
+          "Pensar que todas las interacciones humanas son transaccionales porque así se muestran en internet."
+        ],
+        "commonErrors": [
+          "Extrapolar el algoritmo de tu feed a la realidad cotidiana.",
+          "Olvidar que los algoritmos optimizan para indignación y tiempo en pantalla."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfPor qu\\u00e9 el contenido viral sobre relaciones en redes suele ser enga\\u00f1oso?\", \"options\": [\"Porque est\\u00e1 dise\\u00f1ado con sesgo de selecci\\u00f3n e incentivos de polarizaci\\u00f3n para generar reacciones emocionales intensas y viralidad.\", \"Porque todos los influencers son cient\\u00edficos certificados.\", \"Porque refleja exactamente lo que piensa toda la humanidad.\"], \"correctIndex\": 0, \"explanation\": \"El incentivo de las plataformas es retener atenci\\u00f3n, no educar con rigor cient\\u00edfico.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_9",
+    "levelIndex": 9,
+    "title": "Nivel 9 — Razonamiento Bayesiano y Toma de Decisiones",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Actualización de probabilidades ante nueva evidencia (Prior -> Likelihood -> Posterior), árboles de decisión y manejo racional de la incertidumbre.",
+    "category": "BAYES_DECISIONES",
+    "requiredScore": 900,
+    "estimatedMinutes": 60,
+    "lessons": [
+      {
+        "id": "les_9_1",
+        "orderIndex": 1,
+        "title": "Pensamiento Bayesiano en la Vida Cotidiana",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "El Teorema de Bayes enseña que no debes saltar a conclusiones extremas (0% o 100%) ante una sola señal. Comienzas con una probabilidad previa razonable y la actualizas gradualmente conforme recibes datos verificables.",
+        "examples": [
+          "Prior: Una persona recién conocida tiene una probabilidad moderada de ser compatible contigo.",
+          "Nueva evidencia: Cancela sin reagendar. Actualizas tu estimación hacia menor compatibilidad.",
+          "Nueva evidencia: Te propone otro día con entusiasmo y llega puntual. Actualizas hacia mayor compatibilidad."
+        ],
+        "counterExamples": [
+          "Pasar de 'es el amor de mi vida' a 'es una manipuladora malvada' por un solo retraso de 15 minutos.",
+          "Ignorar 10 señales de incompatibilidad porque tuviste un momento bonito al inicio."
+        ],
+        "commonErrors": [
+          "Inventar porcentajes matemáticos exactos cuando lo que se requiere es ajuste cualitativo de expectativas.",
+          "Aferrarse a la creencia inicial a pesar de la evidencia abrumadora en contra."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfQu\\u00e9 nos ense\\u00f1a la actualizaci\\u00f3n bayesiana frente a una se\\u00f1al ambigua?\", \"options\": [\"Ajustar moderadamente nuestras hip\\u00f3tesis sin saltar a conclusiones absolutas, manteniendo la mente abierta hasta recolectar m\\u00e1s datos.\", \"Asumir de inmediato el peor escenario posible para proteger nuestro ego.\", \"Ignorar la realidad y actuar como si nada hubiera pasado.\"], \"correctIndex\": 0, \"explanation\": \"El pensamiento bayesiano calibra la confianza en funci\\u00f3n de la calidad y cantidad de evidencia disponible.\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod_10",
+    "levelIndex": 10,
+    "title": "Nivel 10 — Dinámicas Complejas, Manipulación y Teoría de Juegos",
+    "evidenceLevel": "HIGH_EVIDENCE",
+    "description": "Detección de patrones manipuladores (gaslighting, refuerzo intermitente), teoría de juegos (cooperación, reciprocidad, incentivos) y resolución asertiva.",
+    "category": "DINAMICAS_COMPLEJAS",
+    "requiredScore": 1000,
+    "estimatedMinutes": 65,
+    "lessons": [
+      {
+        "id": "les_10_1",
+        "orderIndex": 1,
+        "title": "Diferenciar Desacuerdo Legítimo de Manipulación Emocional",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "Tener opiniones diferentes o límites incompatibles es normal. La manipulación real implica distorsionar la realidad (gaslighting), generar culpa para vulnerar límites o usar refuerzo intermitente para crear adicción.",
+        "examples": [
+          "Desacuerdo: 'No me gusta ese tipo de música y prefiero no ir al concierto contigo.' (Límite sano)",
+          "Manipulación: 'Si realmente me amaras, dejarías a todos tus amigos por mí.' (Chantaje emocional)"
+        ],
+        "counterExamples": [
+          "Llamar 'tóxica' a cualquier persona que no esté de acuerdo con tus ideas.",
+          "Confundir la torpeza comunicativa puntual con una estrategia maquiavélica de control."
+        ],
+        "commonErrors": [
+          "Quedarse en una relación esperando 'rescatar' o 'cambiar' a una persona manipuladora.",
+          "Creer que tolerar malos tratos te hace más noble o leal."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfCu\\u00e1l es la respuesta adecuada ante un patr\\u00f3n reiterado de chantaje o invalidaci\\u00f3n emocional?\", \"options\": [\"Establecer l\\u00edmites firmes y claros, y si la conducta persiste, retirarse de la relaci\\u00f3n con dignidad.\", \"Intentar convencerla con argumentos interminables para que cambie de personalidad.\", \"Pagarle con la misma moneda aplicando t\\u00e9cnicas de manipulaci\\u00f3n.\"], \"correctIndex\": 0, \"explanation\": \"La mejor protecci\\u00f3n contra din\\u00e1micas t\\u00f3xicas es la capacidad de retirarte cuando se vulneran tus l\\u00edmites.\"}"
+      },
+      {
+        "id": "les_10_2",
+        "orderIndex": 2,
+        "title": "Teoría de Juegos: Cooperación y Ojo por Ojo Generoso (Tit-for-Tat)",
+        "evidenceLevel": "HIGH_EVIDENCE",
+        "conceptExplanation": "En relaciones repetidas, la estrategia matemáticamente más exitosa es comenzar cooperando, ser recíproco ante la cooperación del otro, y desinvertir calmadamente si hay deserción (falta de reciprocidad), pero perdonar si la cooperación se reanuda.",
+        "examples": [
+          "Invertir tiempo y atención en alguien que corresponde con la misma dedicación.",
+          "Si notas que la otra persona deja de responder y no invierte, reduces tu inversión sin rencores."
+        ],
+        "counterExamples": [
+          "Dar el 100% incondicionalmente a alguien que aporta el 0% (auto-sacrificio tóxico).",
+          "Buscar venganza o resentimiento cuando alguien no puede salir contigo."
+        ],
+        "commonErrors": [
+          "Jugar juegos de poder o pretender desinterés fingido.",
+          "No saber retirarse ante la falta crónica de cooperación mutua."
+        ],
+        "quizDataJson": "{\"question\": \"\\u00bfPor qu\\u00e9 la estrategia de reciprocidad generosa supera tanto a la sumisi\\u00f3n como al cinismo?\", \"options\": [\"Porque premia la cooperaci\\u00f3n mutua y protege contra el aprovechamiento sin caer en la hostilidad destructiva.\", \"Porque permite ganar todas las discusiones sin esfuerzo.\", \"Porque obliga a la otra persona a hacer lo que t\\u00fa quieras.\"], \"correctIndex\": 0, \"explanation\": \"Fomenta relaciones sim\\u00e9tricas basadas en incentivos alineados de respeto mutuo.\"}"
+      }
+    ]
+  }
+]

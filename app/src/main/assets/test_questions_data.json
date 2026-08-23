@@ -1,0 +1,50 @@
+[
+  {
+    "id": "tq_1",
+    "scenario": "Una persona con la que sales hace 3 semanas no contesta tu mensaje durante 7 horas un día laboral. ¿Cuál es la interpretación racional?",
+    "options": [
+      "Está ocupada con su trabajo o vida personal; no hay evidencia suficiente para asumir desinterés ni juego psicológico.",
+      "Definitivamente está jugando a 'hacerse la difícil' y debo dejar de escribirle por 3 días para enseñarle una lección.",
+      "Está saliendo con otra persona y ya no le importas en absoluto."
+    ],
+    "correctIndex": 0,
+    "cognitivePrinciple": "Diferenciación de Hechos vs Interpretaciones y Evitación de Lectura de Mente.",
+    "explanation": "El retraso aislado de horas en un día laboral carece de significancia estadística sin un patrón sostenido."
+  },
+  {
+    "id": "tq_2",
+    "scenario": "Le propones una cita para el sábado a una chica y te responde: 'El sábado no puedo porque tengo un compromiso familiar'. No ofrece una fecha alternativa. ¿Qué haces?",
+    "options": [
+      "Aceptas amablemente con un 'Sin problema, que disfrutes el compromiso' y dejas que la iniciativa de proponer la siguiente fecha recaiga en ella.",
+      "Le preguntas inmediatamente: '¿Y el domingo? ¿O el próximo martes? ¿O cuándo puedes?' para insistir.",
+      "Le reclamas que siempre pone excusas."
+    ],
+    "correctIndex": 0,
+    "cognitivePrinciple": "Evaluación de Reciprocidad y Respeto por la Autonomía.",
+    "explanation": "Cuando alguien rechaza un plan sin ofrecer alternativa, la respuesta calibrada es no presionar y observar si existe iniciativa posterior."
+  },
+  {
+    "id": "tq_3",
+    "scenario": "Un amigo te dice: 'Vi en TikTok que si una mujer te toca el brazo significa que el 90% de las veces quiere acostarse contigo'. ¿Qué falla lógica hay aquí?",
+    "options": [
+      "Falacia de estadística inventada, sesgo de confirmación y simplificación absurda del comportamiento humano.",
+      "Ninguna, TikTok tiene estudios científicos avalados por psicólogos.",
+      "La estadística es correcta siempre que el toque dure más de 2 segundos."
+    ],
+    "correctIndex": 0,
+    "cognitivePrinciple": "Pensamiento Crítico y Detección de Pseudociencia Social.",
+    "explanation": "No existen estadísticas mágicas ni conductas universales que demuestren atracción inequívoca."
+  },
+  {
+    "id": "tq_4",
+    "scenario": "En una cita, la otra persona empieza a hablar despectivamente de todos sus ex novios llamándolos 'locos y monstruos'. ¿Qué hipótesis es más prudente considerar?",
+    "options": [
+      "Podría indicar un patrón de falta de autocrítica y dificultad para asumir responsabilidad en sus relaciones pasadas.",
+      "Demuestra que ella es una víctima inocente y que tú debes salvarla.",
+      "Es una prueba de que ella es la persona más sincera del mundo."
+    ],
+    "correctIndex": 0,
+    "cognitivePrinciple": "Evaluación de Patrones de Responsabilidad Personal.",
+    "explanation": "Cuando todos los terceros son catalogados como culpables absolutos, suele existir una externalización sistemática de la culpa."
+  }
+]

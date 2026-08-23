@@ -1,0 +1,44 @@
+[
+  {
+    "id": "adv_1",
+    "claim": "El hombre siempre debe pagar el 100% de todas las citas porque eso demuestra que es un 'proveedor de alto valor'.",
+    "originSource": "Creadores de contenido tradicionalistas / High Value Coaches",
+    "analysis": {
+      "meaning": "Plantea que la valía masculina y el cortejo están determinados exclusivamente por la solvencia financiera y la disposición a absorber el gasto total de la dinámica.",
+      "availableEvidence": "MODERATE_EVIDENCE: En culturas tradicionales el rol de proveedor está internalizado, pero estudios contemporáneos demuestran que las relaciones con reciprocidad y acuerdos mutuos tienen mayor estabilidad y satisfacción.",
+      "potentialBiases": "Sesgo de género tradicional, visión transaccional de las relaciones humanas y confusión entre solvencia y madurez emocional.",
+      "whatMayBeTrue": "La generosidad y el detalle en una primera invitación son socialmente valorados como un gesto de cortesía.",
+      "whatIsExaggeration": "Afirmar que quien no paga siempre es 'poco hombre' o que pagar garantiza el respeto y la lealtad de la otra persona.",
+      "whatIsUnfounded": "La creencia de que el dinero sustituye a la compatibilidad emocional, el respeto y la buena comunicación.",
+      "conclusion": "Pagar o invitar es un gesto libre de cortesía, no un contrato de compra-venta de afecto. La reciprocidad y el agradecimiento mutuo son mucho más predictivos del éxito que una regla financiera rígida."
+    }
+  },
+  {
+    "id": "adv_2",
+    "claim": "Tarda el doble de tiempo en responder sus mensajes para que se obsesione contigo.",
+    "originSource": "Dating coaches de manipulación / RedPill / PUA",
+    "analysis": {
+      "meaning": "Sugiere utilizar el tiempo de respuesta como una herramienta de manipulación emocional para generar incertidumbre y ansiedad en la otra persona.",
+      "availableEvidence": "HIGH_EVIDENCE: La psicología demuestra que el refuerzo intermitente genera respuestas ansiosas en personas con apego inseguro, pero destruye la confianza y ahuyenta a las personas con apego seguro y autoestima sana.",
+      "potentialBiases": "Pensamiento manipulador, suposición de que todas las personas reaccionan con obsesión ante el desinterés fingido.",
+      "whatMayBeTrue": "No estar pegado al teléfono las 24 horas porque tienes una vida y responsabilidades propias es sano y atractivo.",
+      "whatIsExaggeration": "Calcular cronométricamente los minutos para enviar un mensaje como si fuera una estrategia militar.",
+      "whatIsUnfounded": "Creer que la manipulación de tiempos construye relaciones estables y sinceras a largo plazo.",
+      "conclusion": "Responde con naturalidad cuando tengas tiempo y ganas. Tener una vida ocupada real es maduro; fingir desinterés para manipular es infantil."
+    }
+  },
+  {
+    "id": "adv_3",
+    "claim": "Si una mujer no te responde en 5 minutos en Instagram es porque tiene 100 hombres más y ya perdiste tu oportunidad.",
+    "originSource": "Foros de resentimiento y redes sociales (Rage bait)",
+    "analysis": {
+      "meaning": "Generalización catastrófica que asume que el tiempo de respuesta en redes refleja una competencia hipergámica constante y malintencionada.",
+      "availableEvidence": "LIMITED_EVIDENCE: Las personas utilizan las redes con patrones sumamente heterogéneos según su trabajo, hábitos de atención y vida privada.",
+      "potentialBiases": "Paranoia, pensamiento dicotómico (todo o nada), lectura de mente y sesgo de catastrofismo.",
+      "whatMayBeTrue": "Las personas muy solicitadas pueden recibir muchos mensajes y demorar en ver notificaciones de desconocidos.",
+      "whatIsExaggeration": "Asumir que un retraso equivale a un rechazo categórico o a una conspiración en tu contra.",
+      "whatIsUnfounded": "La idea de que todas las personas viven pendientes exclusivamente de los mensajes directos de redes.",
+      "conclusion": "No proyectes tus inseguridades en los tiempos de conexión ajenos. Si la interacción fluye con respeto en el mundo real, los tiempos de Instagram son irrelevantes."
+    }
+  }
+]
