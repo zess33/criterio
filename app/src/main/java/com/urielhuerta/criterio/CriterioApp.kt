@@ -29,6 +29,7 @@ class CriterioApp : Application() {
     val patternDetectionEngine by lazy { PatternDetectionEngine() }
     val voiceCoachEngine by lazy { VoiceCoachEngine() }
     val darkPsychologyEngine by lazy { DarkPsychologyEngine() }
+    val appUpdateManager by lazy { com.urielhuerta.criterio.data.updater.AppUpdateManager() }
 
     // Repositories
     lateinit var educationRepository: EducationRepository private set

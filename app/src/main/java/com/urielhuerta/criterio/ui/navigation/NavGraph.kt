@@ -52,7 +52,7 @@ fun CriterioNavGraph(
     val testMeViewModel = remember { TestMeViewModel() }
     val darkPsychologyViewModel = remember { DarkPsychologyViewModel(app.darkPsychologyEngine) }
     val statsViewModel = remember { StatsViewModel(app.educationRepository, app.achievementRepository) }
-    val settingsViewModel = remember { SettingsViewModel(app.userPreferencesRepository) }
+    val settingsViewModel = remember { SettingsViewModel(app.userPreferencesRepository, app.appUpdateManager) }
 
     Scaffold(
         bottomBar = {
