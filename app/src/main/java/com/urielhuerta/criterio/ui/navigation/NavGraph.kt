@@ -43,7 +43,7 @@ fun CriterioNavGraph(
 
     // ViewModels instanciados desde el Service Locator de la App
     val onboardingViewModel = remember { OnboardingViewModel(app.userPreferencesRepository) }
-    val homeViewModel = remember { HomeViewModel(app.educationRepository, app.spacedRepetitionRepository, app.userPreferencesRepository) }
+    val homeViewModel = remember { HomeViewModel(app.educationRepository, app.spacedRepetitionRepository, app.userPreferencesRepository, app.appUpdateManager) }
     val academyViewModel = remember { AcademyViewModel(app.educationRepository) }
     val analyzerViewModel = remember { AnalyzerViewModel(app.cognitiveAnalyzerEngine, app.userPreferencesRepository) }
     val simulatorViewModel = remember { SimulatorViewModel(app.simulationRepository, app.userPreferencesRepository) }

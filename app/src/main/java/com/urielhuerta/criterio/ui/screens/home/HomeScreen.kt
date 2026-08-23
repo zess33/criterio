@@ -39,7 +39,8 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val educationRepository: EducationRepository,
     private val spacedRepetitionRepository: SpacedRepetitionRepository,
-    private val preferencesRepository: UserPreferencesRepository
+    private val preferencesRepository: UserPreferencesRepository,
+    private val appUpdateManager: com.urielhuerta.criterio.data.updater.AppUpdateManager = com.urielhuerta.criterio.data.updater.AppUpdateManager()
 ) : ViewModel() {
 
     val preferences: StateFlow<UserPreferences> = preferencesRepository.userPreferencesFlow
@@ -53,6 +54,47 @@ class HomeViewModel(
 
     val cardsDue: StateFlow<List<SpacedRepetitionCardEntity>> = spacedRepetitionRepository.getCardsDueForReview()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    var updateCheckResult by mutableStateOf<com.urielhuerta.criterio.data.updater.UpdateCheckResult?>(null)
+    var isDownloadingUpdate by mutableStateOf(false)
+    var downloadProgress by mutableStateOf(0f)
+    var showUpdateDialog by mutableStateOf(false)
+
+    fun checkUpdatesOnLaunch() {
+        viewModelScope.launch {
+            try {
+                val result = appUpdateManager.checkForUpdates()
+                updateCheckResult = result
+                if (result.isUpdateAvailable) {
+                    showUpdateDialog = true
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun downloadAndInstallUpdate(context: android.content.Context) {
+        val downloadUrl = updateCheckResult?.downloadUrl ?: return
+        if (isDownloadingUpdate) return
+        isDownloadingUpdate = true
+        downloadProgress = 0f
+
+        viewModelScope.launch {
+            appUpdateManager.downloadAndInstallApk(
+                context = context,
+                downloadUrl = downloadUrl,
+                onProgress = { p -> downloadProgress = p },
+                onSuccess = {
+                    isDownloadingUpdate = false
+                    showUpdateDialog = false
+                },
+                onError = {
+                    isDownloadingUpdate = false
+                }
+            )
+        }
+    }
 
     fun toggleRawMode(enabled: Boolean) {
         viewModelScope.launch {
@@ -86,6 +128,11 @@ fun HomeScreen(
     val modules by viewModel.modulesWithLessons.collectAsState()
     val dueCount by viewModel.cardsDueCount.collectAsState()
     val dueCards by viewModel.cardsDue.collectAsState()
+    val context = androidx.compose.ui.platform.LocalContext.current
+
+    LaunchedEffect(Unit) {
+        viewModel.checkUpdatesOnLaunch()
+    }
 
     var showReviewDialog by remember { mutableStateOf(false) }
     var currentReviewIndex by remember { mutableStateOf(0) }
@@ -153,6 +200,49 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(bottom = 32.dp)
         ) {
+            // Banner de Actualización Disponible (si hay una nueva versión)
+            if (viewModel.updateCheckResult?.isUpdateAvailable == true) {
+                item {
+                    val update = viewModel.updateCheckResult!!
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { viewModel.showUpdateDialog = true },
+                        shape = RoundedCornerShape(14.dp),
+                        colors = CardDefaults.cardColors(containerColor = EvidenceHigh.copy(alpha = 0.15f)),
+                        border = androidx.compose.foundation.BorderStroke(1.5.dp, EvidenceHigh)
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(14.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            Icon(Icons.Default.RocketLaunch, contentDescription = null, tint = EvidenceHigh, modifier = Modifier.size(28.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = "¡Nueva versión disponible (v${update.latestVersion})!",
+                                    style = MaterialTheme.typography.titleSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    color = EvidenceHigh
+                                )
+                                Text(
+                                    text = "Toca para ver novedades y actualizar",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            Button(
+                                onClick = { viewModel.showUpdateDialog = true },
+                                colors = ButtonDefaults.buttonColors(containerColor = EvidenceHigh),
+                                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp)
+                            ) {
+                                Text("Actualizar", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+                            }
+                        }
+                    }
+                }
+            }
+
             // Banner de Inicio Rápido / Tutorial
             item {
                 com.urielhuerta.criterio.ui.components.QuickTutorialBanner(
@@ -479,6 +569,68 @@ fun HomeScreen(
                 "No uses las herramientas para 'perseguir' a quien no muestra interés; úsalas para calibrar tu propia inversión."
             ),
             onDismiss = { showTutorialDialog = false }
+        )
+    }
+
+    // Modal de Notificación de Actualización In-App
+    if (viewModel.showUpdateDialog && viewModel.updateCheckResult?.isUpdateAvailable == true) {
+        val res = viewModel.updateCheckResult!!
+        AlertDialog(
+            onDismissRequest = { if (!viewModel.isDownloadingUpdate) viewModel.showUpdateDialog = false },
+            title = {
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Icon(Icons.Default.RocketLaunch, contentDescription = null, tint = EvidenceHigh)
+                    Text("¡Nueva Actualización!", fontWeight = FontWeight.Bold)
+                }
+            },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        text = "Versión actual: v${res.currentVersion}  ➔  Nueva: v${res.latestVersion}",
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.primary,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    Text(
+                        text = res.changelog,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+
+                    if (viewModel.isDownloadingUpdate) {
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = "Descargando actualización: ${(viewModel.downloadProgress * 100).toInt()}%",
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = FontWeight.Bold
+                        )
+                        LinearProgressIndicator(
+                            progress = viewModel.downloadProgress,
+                            modifier = Modifier.fillMaxWidth().height(6.dp),
+                            color = EvidenceHigh
+                        )
+                    }
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = { viewModel.downloadAndInstallUpdate(context) },
+                    enabled = !viewModel.isDownloadingUpdate,
+                    colors = ButtonDefaults.buttonColors(containerColor = EvidenceHigh)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        Icon(Icons.Default.Download, contentDescription = null)
+                        Text(if (viewModel.isDownloadingUpdate) "Descargando..." else "Actualizar Ahora")
+                    }
+                }
+            },
+            dismissButton = {
+                if (!viewModel.isDownloadingUpdate) {
+                    TextButton(onClick = { viewModel.showUpdateDialog = false }) {
+                        Text("Recordar Más Tarde")
+                    }
+                }
+            }
         )
     }
 }
